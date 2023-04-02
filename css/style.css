@@ -1,0 +1,32 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+    box-sizing: border-box;
+}
+
+.squaregrid {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 720px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.squarerow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 1px solid darkred;
+    height: 120px;
+}
+
+.squareletter {
+    margin: 0 auto;
+    padding: 0px;
+    width: 16.6%;
+    text-align: center;
+    border: 1px solid darkblue;
+    height: 100%;
+}
