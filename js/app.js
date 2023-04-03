@@ -26,6 +26,7 @@ submitBtnEl.addEventListener('click', submit)
 
 function init() {
     word = changeToLetterArray(getRandomWord())
+    console.log(word)
     win = 0
     puzzle = []
     messageEl.textContent = "Let's play!"
@@ -57,8 +58,16 @@ function checkIfAlphabet(wordArray) {
     return hasEveryLetter === wordArray.length
 }
 
+function checkIfArraysAreEqual(arr1, arr2) {
+    const areEqual = arr1.every(function (elem, idx) {
+        return elem === arr2[idx]
+    }) && arr1.length === arr2.length
+    return areEqual
+}
+
 function checkForWin() {
-    if (userinput === word) {
+    if (checkIfArraysAreEqual(word, userInput)) {
+        console.log(checkIfArraysAreEqual(word, userInput))
         win = 1
     }
     else {
@@ -67,8 +76,9 @@ function checkForWin() {
 }
 
 function updatePuzzle() {
-    if (win = 0) {
-        changeRow()
+    if (win === 1) {
+        // put in all of the fun things that would happen if you win the puzzle!
+        messageEl.textContent = "You WIN!"
     }
    
 }
