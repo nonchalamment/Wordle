@@ -33,6 +33,7 @@ function init() {
     puzzle = []
     attempt = 0
     userInputEl.value = ""
+    messageEl.textContent = "Let's play!"
     for (let i = 0; i < 30; i++) {
         squareEls[i].textContent = ""
         squareEls[i].style.backgroundColor = "aliceBlue"
@@ -115,23 +116,39 @@ function updateRowDisplay() {
         squareEls[i].textContent = userInput[normalIdx].toUpperCase()
         normalIdx++
     }
+    console.log(normalIdx)
     updateRowColor()
 }
 
 
 function updateRowColor() {
     let attemptIdx = attempt * 5
+    let normalIdx = 0
     if (win === 1) {
         for (let i = attemptIdx; i < attemptIdx + 5; i++) {
             squareEls[i].style.backgroundColor = "green"
         }
     }
     else {
-        compare()
+        for (let i = attemptIdx; i < attemptIdx + 5; i++) {
+            if (userInput[normalIdx] === word[normalIdx]) {
+                squareEls[i].style.backgroundColor = "green"
+            }
+            else if (word.includes(userInput[normalIdx])) {
+                squareEls[i].style.backgroundColor = "yellow"
+            }
+            else {
+                squareEls[i].style.backgroundColor = "lightGray"
+            }
+            normalIdx++
+        }
     }
 }
 
+function compareToAnswer(arr) {
 
+
+}
 
 
 init()
