@@ -3,6 +3,7 @@
 import { getRandomWord } from "../data/words.js"
 const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
 "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+const colors = ["aliceBlue", "green", "yellow"]
 
 /*---------------------------- Variables (state) ----------------------------*/
 
@@ -31,7 +32,11 @@ function init() {
     win = 0
     puzzle = []
     attempt = 0
-    messageEl.textContent = "Let's play!"
+    userInputEl.value = ""
+    for (let i = 0; i < 30; i++) {
+        squareEls[i].textContent = ""
+        squareEls[i].style.backgroundColor = "aliceBlue"
+    }
 }
 
 function submit() {
@@ -71,15 +76,21 @@ function checkForWin() {
     if (checkIfArraysAreEqual(word, userInput)) {
         win = 1
     }
-    else {
-        compare()
+}
+
+function changeToLetterArray(str) {
+    let letterArray = []
+    for (let i = 0; i < str.length; i++) {
+        letterArray[i] = str.slice(i, i+1)
     }
+    return letterArray
 }
 
 function updatePuzzle() {
     if (win === 1) {
         // put in all of the fun things that would happen if you win the puzzle!
         messageEl.textContent = "You WIN!"
+        updateRowDisplay()
     }
     else if (attempt === 5) {
         messageEl.textContent = "Game over."
@@ -97,10 +108,6 @@ function updatePuzzle() {
    
 }
 
-function updateCurrentRowStyle() {
-    // update text and color
-}
-
 function updateRowDisplay() {
     let attemptIdx = attempt * 5
     let normalIdx = 0
@@ -108,23 +115,23 @@ function updateRowDisplay() {
         squareEls[i].textContent = userInput[normalIdx].toUpperCase()
         normalIdx++
     }
-
+    updateRowColor()
 }
 
-function changeRow() {
 
-}
-
-function changeToLetterArray(str) {
-    let letterArray = []
-    for (let i = 0; i < str.length; i++) {
-        letterArray[i] = str.slice(i, i+1)
+function updateRowColor() {
+    let attemptIdx = attempt * 5
+    if (win === 1) {
+        for (let i = attemptIdx; i < attemptIdx + 5; i++) {
+            squareEls[i].style.backgroundColor = "green"
+        }
     }
-    return letterArray
+    else {
+        compare()
+    }
 }
 
-function compare() {
 
-}
+
 
 init()
