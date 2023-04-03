@@ -25,24 +25,23 @@ submitBtnEl.addEventListener('click', submit)
 /*-------------------------------- Functions --------------------------------*/
 
 function init() {
-    word = getRandomWord()
+    word = changeToLetterArray(getRandomWord())
     win = 0
     puzzle = []
     messageEl.textContent = "Let's play!"
-    console.log(word)
 }
 
 function submit() {
     userInput = changeToLetterArray(userInputEl.value.toLowerCase())
-    console.log(userInput)
     userInputEl.value = ""
-    if (typeof userInput != 'string') {
+    if (!checkIfAlphabet(userInput)) {
         messageEl.textContent = "Error. Incorrect input."
     }
     else if (userInput.length != 5) {
         messageEl.textContent = "Five letters only."
     }
     else {
+        messageEl.textContent = "Let's play!"
         checkForWin()
         updatePuzzle()
     }
@@ -50,6 +49,13 @@ function submit() {
 }
 
 // if userinput is equal to word, then game is over
+
+function checkIfAlphabet(wordArray) {
+    const hasEveryLetter = wordArray.reduce(function(prev, letter) {
+        return prev + alphabet.includes(letter)
+    }, 0)
+    return hasEveryLetter === wordArray.length
+}
 
 function checkForWin() {
     if (userinput === word) {
