@@ -1,32 +1,51 @@
 * {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 2rem;
     box-sizing: border-box;
+}
+
+header {
+    font-size: 3.5rem;
+    text-align: center;
+    font-style: italic;
+    padding: 10px;
+    letter-spacing: 1rem;
 }
 
 .squaregrid {
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
-    width: 720px;
+    /* border: 1px solid black; */
+    width: 550px;
     margin: 0 auto;
     padding: 10px;
+    font-size: 3rem;
 }
 
 .squarerow {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
-    border: 1px solid darkred;
-    height: 120px;
+    justify-content: space-between;
+    /* border: 1px solid darkred; */
+    height: 80px;
+    margin: 10px;
 }
 
 .squareletter {
-    margin: 0 auto;
     padding: 0px;
-    width: 16.6%;
+    width: 16.7%;
     text-align: center;
     border: 1px solid darkblue;
+    background-color: aliceblue;
     height: 100%;
+}
+
+.squareletter > p {
+    margin: 0px auto;
+    padding: 10px;
+}
+
+.controls {
+    text-align: center;
+    padding: 10px;
 }
