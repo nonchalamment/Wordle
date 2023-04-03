@@ -11,6 +11,10 @@ header {
     letter-spacing: 1rem;
 }
 
+#gamedisplay {
+    text-align: center;
+}
+
 .squaregrid {
     display: flex;
     flex-direction: column;

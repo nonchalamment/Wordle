@@ -4,12 +4,13 @@ import { getRandomWord } from "../data/words.js"
 
 /*---------------------------- Variables (state) ----------------------------*/
 
-let puzzle, win, word
+let puzzle, win, word, userInput
 
 /*------------------------ Cached Element References ------------------------*/
 const submitBtnEl = document.getElementById("submit")
 const resetBtnEl = document.getElementById("reset")
 const userInputEl = document.getElementById("userinput")
+const messageEl = document.getElementById("gamedisplay")
 
 const squareEls = document.querySelectorAll(".squareletter")
 
@@ -22,47 +23,39 @@ submitBtnEl.addEventListener('click', submit)
 /*-------------------------------- Functions --------------------------------*/
 
 function init() {
-    word = ""
+    word = getRandomWord()
     win = 0
     puzzle = []
-    console.log("initializing")
+    messageEl.textContent = "Let's play!"
+    console.log(word)
 }
 
 function submit() {
     getUserInput()
     updatePuzzle()
-    console.log("submit button clicked")
 }
 
 
 function getUserInput() {
-    let word = userInputEl.value
+    userInput = userInputEl.value.toLowerCase()
     userInputEl.value = ""
+    if (userInput.length != 5) {
+        messageEl.textContent = "Five letters only."
+    }
 }
 
 function updatePuzzle() {
+    checkForWin()
     updateCurrentRow()
-    checkForWinner()
 }
 
-function checkForWinner() {
-
-
+function checkForWin() {
 }
 
 function updateCurrentRow() {
-    updateCurrentRowText()
-    updateCurrentRowColor()
+    // update text and color
 }
 
-function updateCurrentRowText() {
-
-}
-
-function updateCurrentRowColor() {
-
-
-}
 
 
 init()
