@@ -32,13 +32,16 @@ function init() {
 
 function submit() {
     userInput = userInputEl.value.toLowerCase()
-    userInputEl.value = ""        
-    if (userInput.length != 5) {
+    userInputEl.value = ""   
+    if (typeof userInput != 'string') {
+        messageEl.textContent = ""
+    }
+    else if (userInput.length != 5) {
         messageEl.textContent = "Five letters only."
     }
     else {
+        checkForWin()
         updatePuzzle()
-
     }
 
 }
@@ -48,21 +51,15 @@ function updatePuzzle() {
     changeRow()
 }
 
-function checkForWin() {
-    isRightWord()
-    isWrongWord()
-}
+// if userinput is equal to word, then game is over
 
-function isRightWord() {
-    if (userInput = word) {
+function checkForWin() {
+    if (userinput === word) {
         win = 1
     }
-    updateCurrentRowStyle;
-}
-
-function isWrongWord() {
-
-
+    else {
+        
+    }
 }
 
 function updateCurrentRowStyle() {
@@ -73,6 +70,12 @@ function changeRow() {
 
 }
 
-
+function changeToLetterArray(str) {
+    let letterArray = []
+    for (let i = 0; i < str.length; i++) {
+        letterArray[i] = str.slice(i, i+1)
+    }
+    return letterArray
+}
 
 init()
