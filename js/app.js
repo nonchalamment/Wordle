@@ -1,6 +1,8 @@
 /*-------------------------------- Constants --------------------------------*/
 
 import { getRandomWord } from "../data/words.js"
+const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
+"m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
 /*---------------------------- Variables (state) ----------------------------*/
 
@@ -31,10 +33,11 @@ function init() {
 }
 
 function submit() {
-    userInput = userInputEl.value.toLowerCase()
-    userInputEl.value = ""   
+    userInput = changeToLetterArray(userInputEl.value.toLowerCase())
+    console.log(userInput)
+    userInputEl.value = ""
     if (typeof userInput != 'string') {
-        messageEl.textContent = ""
+        messageEl.textContent = "Error. Incorrect input."
     }
     else if (userInput.length != 5) {
         messageEl.textContent = "Five letters only."
@@ -46,11 +49,6 @@ function submit() {
 
 }
 
-function updatePuzzle() {
-    checkForWin()
-    changeRow()
-}
-
 // if userinput is equal to word, then game is over
 
 function checkForWin() {
@@ -58,8 +56,15 @@ function checkForWin() {
         win = 1
     }
     else {
-        
+        compare()
     }
+}
+
+function updatePuzzle() {
+    if (win = 0) {
+        changeRow()
+    }
+   
 }
 
 function updateCurrentRowStyle() {
@@ -76,6 +81,10 @@ function changeToLetterArray(str) {
         letterArray[i] = str.slice(i, i+1)
     }
     return letterArray
+}
+
+function compare() {
+
 }
 
 init()
