@@ -31,29 +31,46 @@ function init() {
 }
 
 function submit() {
-    getUserInput()
-    updatePuzzle()
-}
-
-
-function getUserInput() {
     userInput = userInputEl.value.toLowerCase()
-    userInputEl.value = ""
+    userInputEl.value = ""        
     if (userInput.length != 5) {
         messageEl.textContent = "Five letters only."
     }
+    else {
+        updatePuzzle()
+
+    }
+
 }
 
 function updatePuzzle() {
     checkForWin()
-    updateCurrentRow()
+    changeRow()
 }
 
 function checkForWin() {
+    isRightWord()
+    isWrongWord()
 }
 
-function updateCurrentRow() {
+function isRightWord() {
+    if (userInput = word) {
+        win = 1
+    }
+    updateCurrentRowStyle;
+}
+
+function isWrongWord() {
+
+
+}
+
+function updateCurrentRowStyle() {
     // update text and color
+}
+
+function changeRow() {
+
 }
 
 
