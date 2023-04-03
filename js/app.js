@@ -22,17 +22,18 @@ submitBtnEl.addEventListener('click', submit)
 /*-------------------------------- Functions --------------------------------*/
 
 function init() {
-    console.log("reset button clicked")
+    word = ""
+    win = 0
+    puzzle = []
+    console.log("initializing")
 }
 
 function submit() {
     getUserInput()
+    updatePuzzle()
     console.log("submit button clicked")
 }
 
-function render() {
-
-}
 
 function getUserInput() {
     let word = userInputEl.value
@@ -40,9 +41,28 @@ function getUserInput() {
 }
 
 function updatePuzzle() {
+    updateCurrentRow()
+    checkForWinner()
+}
+
+function checkForWinner() {
+
 
 }
 
-function updateCurrentRow(){
+function updateCurrentRow() {
+    updateCurrentRowText()
+    updateCurrentRowColor()
+}
+
+function updateCurrentRowText() {
 
 }
+
+function updateCurrentRowColor() {
+
+
+}
+
+
+init()
