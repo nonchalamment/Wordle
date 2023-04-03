@@ -7,6 +7,7 @@ const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
 /*---------------------------- Variables (state) ----------------------------*/
 
 let puzzle, win, word, userInput
+let attempt = 0
 
 /*------------------------ Cached Element References ------------------------*/
 const submitBtnEl = document.getElementById("submit")
@@ -29,6 +30,7 @@ function init() {
     console.log(word)
     win = 0
     puzzle = []
+    attempt = 0
     messageEl.textContent = "Let's play!"
 }
 
@@ -67,7 +69,6 @@ function checkIfArraysAreEqual(arr1, arr2) {
 
 function checkForWin() {
     if (checkIfArraysAreEqual(word, userInput)) {
-        console.log(checkIfArraysAreEqual(word, userInput))
         win = 1
     }
     else {
@@ -80,11 +81,34 @@ function updatePuzzle() {
         // put in all of the fun things that would happen if you win the puzzle!
         messageEl.textContent = "You WIN!"
     }
+    else if (attempt === 5) {
+        messageEl.textContent = "Game over."
+        updateRowDisplay()
+        attempt++
+    }
+    else if (attempt === 6) {
+        messageEl.textContent = "You are out of tries."
+    }
+    else {
+        messageEl.textContent = "Try again."
+        updateRowDisplay()
+        attempt++
+    }
    
 }
 
 function updateCurrentRowStyle() {
     // update text and color
+}
+
+function updateRowDisplay() {
+    let attemptIdx = attempt * 5
+    let normalIdx = 0
+    for (let i = attemptIdx; i < attemptIdx + 5; i++) {
+        squareEls[i].textContent = userInput[normalIdx].toUpperCase()
+        normalIdx++
+    }
+
 }
 
 function changeRow() {
