@@ -15,7 +15,7 @@ header {
     display: flex;
     flex-direction: column;
     /* border: 1px solid black; */
-    width: 550px;
+    width: 540px;
     margin: 0 auto;
     padding: 10px;
     font-size: 3rem;
@@ -32,17 +32,12 @@ header {
 }
 
 .squareletter {
-    padding: 0px;
+    padding: 10px;
     width: 16.7%;
     text-align: center;
     border: 1px solid darkblue;
     background-color: aliceblue;
     height: 100%;
-}
-
-.squareletter > p {
-    margin: 0px auto;
-    padding: 10px;
 }
 
 .controls {
