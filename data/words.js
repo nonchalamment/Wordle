@@ -3,6 +3,15 @@ const words = [
     "abase",
     "abate",
     "abbey",
+    "above",
+    "abyss",
+    "acute",
+    "admit",
+    "adobe",
+    "adopt",
+    "adore",
+    "agape",
+    
 ]
 
 function getRandomWord() {

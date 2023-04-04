@@ -7,11 +7,12 @@ header {
     font-size: 3.5rem;
     text-align: center;
     font-style: italic;
-    padding: 10px;
+    padding: 20px;
     letter-spacing: 1rem;
 }
 
 #gamedisplay {
+    padding: 0 0 30px 0;
     text-align: center;
 }
 
@@ -19,32 +20,33 @@ header {
     display: flex;
     flex-direction: column;
     /* border: 1px solid black; */
-    width: 540px;
+    width: 350px;
     margin: 0 auto;
-    padding: 10px;
-    font-size: 3rem;
+    padding: 0px;
+    font-size: 2rem;
 }
 
 .squarerow {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     /* border: 1px solid darkred; */
-    height: 80px;
-    margin: 10px;
+    height: 60px;
+    margin: 3px;
 }
 
 .squareletter {
     padding: 10px;
     width: 16.7%;
     text-align: center;
-    border: 1px solid darkblue;
-    background-color: aliceblue;
+    border: 3px solid darkgray;
+    background-color: white;
     height: 100%;
+    width: 18%;
 }
 
 .controls {
     text-align: center;
-    padding: 10px;
+    padding: 20px;
 }

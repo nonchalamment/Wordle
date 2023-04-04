@@ -35,7 +35,7 @@ function init() {
     messageEl.textContent = "Let's play!"
     for (let i = 0; i < 30; i++) {
         squareEls[i].textContent = ""
-        squareEls[i].style.backgroundColor = "aliceBlue"
+        squareEls[i].style.backgroundColor = "white"
     }
 }
 
