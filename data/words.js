@@ -11,7 +11,22 @@ const words = [
     "adopt",
     "adore",
     "agape",
-    
+    "agate",
+    "agree",
+    "ahead",
+    "album",
+    "alien",
+    "alike",
+    "allow",
+    "aloft",
+    "alone",
+    "aloud",
+    "alpha",
+    "altar",
+    "alter",
+    "amber",
+    "ample",
+    "angry",
 ]
 
 function getRandomWord() {

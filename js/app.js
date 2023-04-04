@@ -36,6 +36,7 @@ function init() {
     for (let i = 0; i < 30; i++) {
         squareEls[i].textContent = ""
         squareEls[i].style.backgroundColor = "white"
+        squareEls[i].style.border = "solid lightGray"
     }
 }
 
@@ -126,7 +127,8 @@ function updateRowColor() {
     // within a given row.
     if (win === 1) {
         for (let i = globalIdx; i < globalIdx + 5; i++) {
-            squareEls[i].style.backgroundColor = "green"
+            squareEls[i].style.backgroundColor = "#039634"
+            squareEls[i].style.border = "solid #039634"
         }
     }
     // if all letters are correct, there is no need for additional calculation for color.
@@ -155,7 +157,8 @@ function renderIfGreen(largerIdx, smallerIdx, tally) {
         let currentLetter = userInput[smallerIdx]
         // iterating through 0-4 for each 5-letter input
         if (currentLetter === word[smallerIdx]) {
-            squareEls[i].style.backgroundColor = "green"
+            squareEls[i].style.backgroundColor = "#039634"
+            squareEls[i].style.border = "solid #039634"
             tally[`${currentLetter}`] = tally[`${currentLetter}`] - 1
         // if input at an index is the same is the word at the same index, then change background color
         // to green and decrease the tally count of the letter
@@ -171,7 +174,8 @@ function renderIfYellow(largerIdx, smallerIdx, tally) {
         if (word.includes(`${currentLetter}`) && tally[currentLetter] > 0 && currentLetter != word[smallerIdx]) {
             // if the letter is included in the word, but also isn't the right letter, but also
             // if the tally is remaining for that letter
-            squareEls[i].style.backgroundColor = "yellow"
+            squareEls[i].style.backgroundColor = "#e6b800"
+            squareEls[i].style.border = "solid #e6b800"
             tally[`${currentLetter}`] = tally[`${currentLetter}`] - 1
         }
         else if (currentLetter != word[smallerIdx]) {

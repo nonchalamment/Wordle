@@ -1,17 +1,21 @@
 * {
-    font-family: 'Courier New', Courier, monospace;
     box-sizing: border-box;
 }
 
 header {
     font-size: 3.5rem;
     text-align: center;
-    font-style: italic;
     padding: 20px;
     letter-spacing: 1rem;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
 }
 
 #gamedisplay {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.5rem;
     padding: 0 0 30px 0;
     text-align: center;
 }
@@ -37,16 +41,19 @@ header {
 }
 
 .squareletter {
-    padding: 10px;
+    padding: 15px;
     width: 16.7%;
     text-align: center;
     border: 3px solid darkgray;
     background-color: white;
     height: 100%;
     width: 18%;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 600;
 }
 
 .controls {
+    font-family: 'Josefin Sans', sans-serif;
     text-align: center;
     padding: 20px;
 }
