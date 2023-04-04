@@ -7,7 +7,7 @@ const colors = ["aliceBlue", "green", "yellow"]
 
 /*---------------------------- Variables (state) ----------------------------*/
 
-let puzzle, win, word, userInput
+let win, word, userInput
 let attempt = 0
 
 /*------------------------ Cached Element References ------------------------*/
@@ -30,7 +30,6 @@ function init() {
     word = changeToLetterArray(getRandomWord())
     console.log(word)
     win = 0
-    puzzle = []
     attempt = 0
     userInputEl.value = ""
     messageEl.textContent = "Let's play!"
@@ -116,7 +115,6 @@ function updateRowDisplay() {
         squareEls[i].textContent = userInput[normalIdx].toUpperCase()
         normalIdx++
     }
-    console.log(normalIdx)
     updateRowColor()
 }
 
@@ -130,25 +128,39 @@ function updateRowColor() {
         }
     }
     else {
+        let tally = word.reduce(function(prev, letter){
+            if(prev[letter]){
+              prev[letter] = prev[letter] + 1
+            } else {
+              prev[letter] = 1
+            }
+            return prev
+            }, {})
+
         for (let i = attemptIdx; i < attemptIdx + 5; i++) {
-            if (userInput[normalIdx] === word[normalIdx]) {
+            let currentLetter = userInput[normalIdx]
+            if (currentLetter === word[normalIdx]) {
                 squareEls[i].style.backgroundColor = "green"
+                tally[`${currentLetter}`] = tally[`${currentLetter}`] - 1
+                console.log(tally)
             }
-            else if (word.includes(userInput[normalIdx])) {
+            normalIdx++
+        }
+        normalIdx = 0
+            
+        for (let i = attemptIdx; i < attemptIdx + 5; i++) {
+            let currentLetter = userInput[normalIdx]
+            if (word.includes(`${currentLetter}`) && tally[currentLetter] > 0 && currentLetter != word[normalIdx]) {
                 squareEls[i].style.backgroundColor = "yellow"
+                tally[`${currentLetter}`] = tally[`${currentLetter}`] - 1
             }
-            else {
+            else if (currentLetter != word[normalIdx]) {
                 squareEls[i].style.backgroundColor = "lightGray"
             }
             normalIdx++
         }
+        normalIdx = 0
     }
 }
-
-function compareToAnswer(arr) {
-
-
-}
-
 
 init()
