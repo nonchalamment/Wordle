@@ -120,15 +120,15 @@ function updateRowDisplay() {
 
 
 function updateRowColor() {
-    let attemptIdx = attempt * 5
-    let normalIdx = 0
+    let globalIdx = attempt * 5
+    let rowIdx = 0
     if (win === 1) {
-        for (let i = attemptIdx; i < attemptIdx + 5; i++) {
+        for (let i = largeThirtyIdx; i < attemptIdx + 5; i++) {
             squareEls[i].style.backgroundColor = "green"
         }
     }
     else {
-        let tally = word.reduce(function(prev, letter){
+        let letterTally = word.reduce(function(prev, letter){
             if(prev[letter]){
               prev[letter] = prev[letter] + 1
             } else {
@@ -137,29 +137,34 @@ function updateRowColor() {
             return prev
             }, {})
 
-        for (let i = attemptIdx; i < attemptIdx + 5; i++) {
-            let currentLetter = userInput[normalIdx]
-            if (currentLetter === word[normalIdx]) {
-                squareEls[i].style.backgroundColor = "green"
-                tally[`${currentLetter}`] = tally[`${currentLetter}`] - 1
-                console.log(tally)
-            }
-            normalIdx++
+        checkIfGreen(globalIdx, rowIdx, letterTally)
+        checkIfYellow(globalIdx, rowIdx, letterTally)
+    }
+}
+
+function checkIfGreen(largerIdx, smallerIdx, tally) {
+    for (let i = largerIdx; i < largerIdx + 5; i++) {
+        let currentLetter = userInput[smallerIdx]
+        if (currentLetter === word[smallerIdx]) {
+            squareEls[i].style.backgroundColor = "green"
+            tally[`${currentLetter}`] = tally[`${currentLetter}`] - 1
         }
-        normalIdx = 0
-            
-        for (let i = attemptIdx; i < attemptIdx + 5; i++) {
-            let currentLetter = userInput[normalIdx]
-            if (word.includes(`${currentLetter}`) && tally[currentLetter] > 0 && currentLetter != word[normalIdx]) {
-                squareEls[i].style.backgroundColor = "yellow"
-                tally[`${currentLetter}`] = tally[`${currentLetter}`] - 1
-            }
-            else if (currentLetter != word[normalIdx]) {
-                squareEls[i].style.backgroundColor = "lightGray"
-            }
-            normalIdx++
+        smallerIdx++
+    }
+    smallerIdx = 0
+}
+
+function checkIfYellow(largerIdx, smallerIdx, tally) {
+    for (let i = largerIdx; i < largerIdx + 5; i++) {
+        let currentLetter = userInput[smallerIdx]
+        if (word.includes(`${currentLetter}`) && tally[currentLetter] > 0 && currentLetter != word[smallerIdx]) {
+            squareEls[i].style.backgroundColor = "yellow"
+            tally[`${currentLetter}`] = tally[`${currentLetter}`] - 1
         }
-        normalIdx = 0
+        else if (currentLetter != word[smallerIdx]) {
+            squareEls[i].style.backgroundColor = "lightGray"
+        }
+        smallerIdx++
     }
 }
 
