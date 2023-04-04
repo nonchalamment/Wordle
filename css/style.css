@@ -3,12 +3,12 @@
 }
 
 header {
-    font-size: 3.5rem;
+    font-size: 3.25rem;
     text-align: center;
     padding: 20px;
-    letter-spacing: 1rem;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
+    margin: 0 auto;
 }
 
 #gamedisplay {
@@ -41,7 +41,7 @@ header {
 }
 
 .squareletter {
-    padding: 15px;
+    padding: 15px 0;
     width: 16.7%;
     text-align: center;
     border: 3px solid darkgray;
