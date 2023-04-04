@@ -109,11 +109,11 @@ function updatePuzzle() {
 }
 
 function updateRowDisplay() {
-    let attemptIdx = attempt * 5
-    let normalIdx = 0
-    for (let i = attemptIdx; i < attemptIdx + 5; i++) {
-        squareEls[i].textContent = userInput[normalIdx].toUpperCase()
-        normalIdx++
+    let globalIdx = attempt * 5
+    let rowIdx = 0
+    for (let i = globalIdx; i < globalIdx + 5; i++) {
+        squareEls[i].textContent = userInput[rowIdx].toUpperCase()
+        rowIdx++
     }
     updateRowColor()
 }
@@ -122,11 +122,14 @@ function updateRowDisplay() {
 function updateRowColor() {
     let globalIdx = attempt * 5
     let rowIdx = 0
+    // globalIdx represents the unique ID of each square; rowIdx represents the order of the square
+    // within a given row.
     if (win === 1) {
-        for (let i = largeThirtyIdx; i < attemptIdx + 5; i++) {
+        for (let i = globalIdx; i < globalIdx + 5; i++) {
             squareEls[i].style.backgroundColor = "green"
         }
     }
+    // if all letters are correct, there is no need for additional calculation for color.
     else {
         let letterTally = word.reduce(function(prev, letter){
             if(prev[letter]){
@@ -136,28 +139,38 @@ function updateRowColor() {
             }
             return prev
             }, {})
+        // otherwise, we create a tally of all the letters in the solution to deal with duplicate letters
+        // in order to correctly render the greens and the yellows.
 
-        checkIfGreen(globalIdx, rowIdx, letterTally)
-        checkIfYellow(globalIdx, rowIdx, letterTally)
+        renderIfGreen(globalIdx, rowIdx, letterTally)
+        renderIfYellow(globalIdx, rowIdx, letterTally)
+
+        // run Green first to decrease the tally count
+        // run Yellow next to work with the remaining tally count
     }
 }
 
-function checkIfGreen(largerIdx, smallerIdx, tally) {
+function renderIfGreen(largerIdx, smallerIdx, tally) {
     for (let i = largerIdx; i < largerIdx + 5; i++) {
         let currentLetter = userInput[smallerIdx]
+        // iterating through 0-4 for each 5-letter input
         if (currentLetter === word[smallerIdx]) {
             squareEls[i].style.backgroundColor = "green"
             tally[`${currentLetter}`] = tally[`${currentLetter}`] - 1
+        // if input at an index is the same is the word at the same index, then change background color
+        // to green and decrease the tally count of the letter
         }
         smallerIdx++
     }
     smallerIdx = 0
 }
 
-function checkIfYellow(largerIdx, smallerIdx, tally) {
+function renderIfYellow(largerIdx, smallerIdx, tally) {
     for (let i = largerIdx; i < largerIdx + 5; i++) {
         let currentLetter = userInput[smallerIdx]
         if (word.includes(`${currentLetter}`) && tally[currentLetter] > 0 && currentLetter != word[smallerIdx]) {
+            // if the letter is included in the word, but also isn't the right letter, but also
+            // if the tally is remaining for that letter
             squareEls[i].style.backgroundColor = "yellow"
             tally[`${currentLetter}`] = tally[`${currentLetter}`] - 1
         }
