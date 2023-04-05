@@ -58,9 +58,9 @@ header {
 }
 
 #reset {
+    display: flex;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 1rem;
-    text-align: center;
     padding: 20px;
     margin: 0 auto;
     border-radius: 15px;
@@ -125,7 +125,7 @@ header {
         font-size: 3rem;
     }
 
-    .squaregrid {
+    /* .squaregrid {
         width: 350px;
         font-size: 2rem;
     }
@@ -136,7 +136,7 @@ header {
 
     .squareletter {
         padding: 15px 0;
-    }
+    } */
 
     .keyboard {
         width: 390px;
