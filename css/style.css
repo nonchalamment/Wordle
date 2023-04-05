@@ -119,3 +119,26 @@ header {
     padding: 8px 3px;
     width: 50px;
 }
+
+@media screen and (max-width: 479px) {
+    header {
+        font-size: 3rem;
+    }
+
+    .squaregrid {
+        width: 350px;
+        font-size: 2rem;
+    }
+
+    .squarerow {
+        height: 60px;
+    }
+
+    .squareletter {
+        padding: 15px 0;
+    }
+
+    .keyboard {
+        width: 390px;
+    }
+}

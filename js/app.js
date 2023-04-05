@@ -3,7 +3,6 @@
 import { getRandomWord } from "../data/words.js"
 const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
 "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-const colors = ["aliceBlue", "green", "yellow"]
 
 /*---------------------------- Variables (state) ----------------------------*/
 
@@ -12,7 +11,6 @@ let userInput = []
 let attempt = 0
 
 /*------------------------ Cached Element References ------------------------*/
-const submitBtnEl = document.getElementById("submit")
 const resetBtnEl = document.getElementById("reset")
 const messageEl = document.getElementById("gamedisplay")
 const keyboardEl = document.querySelector(".keyboard")
@@ -32,7 +30,7 @@ function init() {
     attempt = 0
     userInput = []
     messageEl.textContent = "Let's play!"
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < squareEls.length; i++) {
         squareEls[i].textContent = ""
         squareEls[i].style.backgroundColor = "white"
         squareEls[i].style.border = "solid lightGray"
