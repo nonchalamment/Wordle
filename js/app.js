@@ -18,6 +18,8 @@ const messageEl = document.getElementById("gamedisplay")
 
 const squareEls = document.querySelectorAll(".squareletter")
 
+const keyboardEls = document.querySelectorAll(".keyboard")
+
 /*----------------------------- Event Listeners -----------------------------*/
 
 resetBtnEl.addEventListener('click', init)
