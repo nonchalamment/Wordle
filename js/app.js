@@ -7,33 +7,30 @@ const colors = ["aliceBlue", "green", "yellow"]
 
 /*---------------------------- Variables (state) ----------------------------*/
 
-let win, word, userInput
+let win, word
+let userInput = []
 let attempt = 0
 
 /*------------------------ Cached Element References ------------------------*/
 const submitBtnEl = document.getElementById("submit")
 const resetBtnEl = document.getElementById("reset")
-const userInputEl = document.getElementById("userinput")
 const messageEl = document.getElementById("gamedisplay")
+const keyboardEl = document.querySelector(".keyboard")
 
 const squareEls = document.querySelectorAll(".squareletter")
-
-const keyboardEls = document.querySelectorAll(".keyboard")
 
 /*----------------------------- Event Listeners -----------------------------*/
 
 resetBtnEl.addEventListener('click', init)
-submitBtnEl.addEventListener('click', submit)
-
+keyboardEl.addEventListener('click', passKey)
 
 /*-------------------------------- Functions --------------------------------*/
 
 function init() {
     word = changeToLetterArray(getRandomWord())
-    console.log(word)
     win = 0
     attempt = 0
-    userInputEl.value = ""
+    userInput = []
     messageEl.textContent = "Let's play!"
     for (let i = 0; i < 30; i++) {
         squareEls[i].textContent = ""
@@ -44,8 +41,6 @@ function init() {
 }
 
 function submit() {
-    userInput = changeToLetterArray(userInputEl.value.toLowerCase())
-    userInputEl.value = ""
     if (!checkIfAlphabet(userInput)) {
         messageEl.textContent = "Error. Incorrect input."
     }
@@ -56,6 +51,7 @@ function submit() {
         messageEl.textContent = "Let's play!"
         checkForWin()
         updatePuzzle()
+        userInput = []
     }
 
 }
@@ -194,6 +190,44 @@ function renderIfYellow(largerIdx, smallerIdx, tally) {
             squareEls[i].style.color = "white"
         }
         smallerIdx++
+    }
+}
+
+function passKey(evt) {
+    let inputChoice = evt.target.id.toLowerCase()
+    if (attempt < 6) {
+        if (alphabet.includes(inputChoice)) {
+            if (userInput.length < 5) {
+                userInput.push(inputChoice)
+                renderLetter()
+            }
+        }
+        else if (inputChoice === "keybackspace") {
+            userInput.pop()
+            clearRenderLetter()
+            renderLetter()
+        }
+        else if (inputChoice === "keysubmit") {
+            submit()
+        }
+    }
+
+}
+
+function renderLetter() {
+    let globalIdx = attempt * 5
+    let smallerIdx = 0
+    for (let i = globalIdx; i < globalIdx + userInput.length; i++) {
+        let currentLetter = `${userInput[smallerIdx]}`
+         squareEls[i].textContent = currentLetter.toUpperCase()
+        smallerIdx++
+    }
+}
+
+function clearRenderLetter() {
+    let globalIdx = attempt * 5
+    for (let i = globalIdx; i < globalIdx + 5; i++) {
+        squareEls[i].textContent = ''
     }
 }
 
