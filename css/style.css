@@ -61,10 +61,10 @@ header {
 .keyboard {
     font-family: 'Josefin Sans', sans-serif;
     display: flex;
-    width: 500px;
+    width: 450px;
     flex-direction: column;
     flex-wrap: wrap;
-    margin: 25px auto;
+    margin: 0 auto;
     padding: 5px;
 }
 
