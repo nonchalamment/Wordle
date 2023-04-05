@@ -54,10 +54,22 @@ header {
 }
 
 .controls {
-    font-family: 'Courier';
+    display: flex;
+}
+
+#reset {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1rem;
     text-align: center;
     padding: 20px;
     margin: 0 auto;
+    border-radius: 15px;
+    border: none;
+    background-color: lightgray;
+}
+
+#reset:hover {
+    background-color: #d98b92;
 }
 
 .keyboard {
@@ -66,8 +78,9 @@ header {
     width: 400px;
     flex-direction: column;
     flex-wrap: wrap;
+    justify-content: center;
     margin: 0 auto;
-    padding: 5px;
+    padding: 15px;
 }
 
 .keyboardrow {
@@ -89,6 +102,11 @@ header {
     border-radius: 5px;
     background-color: lightgray;
     cursor: pointer;
+}
+
+.key:hover {
+    color: white;
+    background-color: #797c7e;
 }
 
 #keysubmit {

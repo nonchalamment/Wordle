@@ -93,7 +93,8 @@ function updatePuzzle() {
         updateRowDisplay()
     }
     else if (attempt === 5) {
-        messageEl.textContent = "Game over."
+        let answer = 
+        messageEl.textContent = `Game over. The answer was "${word[0]}${word[1]}${word[2]}${word[3]}${word[4]}."`
         updateRowDisplay()
         attempt++
     }
