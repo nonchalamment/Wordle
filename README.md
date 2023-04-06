@@ -1,5 +1,7 @@
 # Wordle
-[A simple yet challenging puzzle!](https://wordle-seiyoung.netlify.app/)
+<b>A simple but challenging puzzle</b>
+
+### [Play here!](https://wordle-seiyoung.netlify.app/)
 
 ![Screen Shot 2023-04-05 at 1 49 01 PM](https://user-images.githubusercontent.com/26176522/230162392-97ec6c37-ce7e-4de4-9b4d-683493cba816.png)
 
@@ -19,7 +21,7 @@ As mentioned before, there is a reset functionality that allows you to play the 
 Thank you to Ollie Toms, Hayden Heffort, and Rebecca Jones at Rock Paper Shotgun for their [article](https://www.rockpapershotgun.com/wordle-past-answers) on their list of past Wordle solutions. The possible solutions for the puzzle are based on this data.
 
 ## Technologies Used
-HTML/CSS/JS
+HTML, CSS, JavaScript, Git
 
 ## Next Steps
 The keyboard is supposed to change colors as the same as the puzzle but I did not get around to implementing this feature.
