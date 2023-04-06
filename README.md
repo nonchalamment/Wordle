@@ -27,3 +27,6 @@ HTML, CSS, JavaScript, Git
 
 ## Next Steps
 The keyboard is supposed to change colors as the same as the puzzle but I did not get around to implementing this feature.
+
+## What did this look like starting out?
+<img width="623" alt="Screen Shot 2023-04-06 at 1 18 47 PM" src="https://user-images.githubusercontent.com/26176522/230450854-5472f0a8-e04d-40e5-9625-b0da7d173a3a.png">
