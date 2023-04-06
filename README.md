@@ -20,6 +20,8 @@ As mentioned before, there is a reset functionality that allows you to play the 
 ## Attributions
 Thank you to Ollie Toms, Hayden Heffort, and Rebecca Jones at Rock Paper Shotgun for their [article](https://www.rockpapershotgun.com/wordle-past-answers) on their list of past Wordle solutions. The possible solutions for the puzzle are based on this data.
 
+Font used is Josefin Sans by Santiago Orozco, obtained from Google Fonts.
+
 ## Technologies Used
 HTML, CSS, JavaScript, Git
 
